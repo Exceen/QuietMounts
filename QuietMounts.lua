@@ -4,7 +4,7 @@ local addon = {
 	defaults =
 	{
 		defaultFootstepsVolume = 70,
-		mountedFootstepsVolume = 20,
+		mountedFootstepsVolume = 45,
 	},
 }
 
