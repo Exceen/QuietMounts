@@ -1,7 +1,7 @@
 ## Title: QuietMounts
 ## Author: Exceen
 ## Description: Changes the footsteps volume on mounts and reverts it back when unmounted
-## Version: 1.0
+## Version: 1.1
 ## APIVersion: 100031
 ## DependsOn: LibAddonMenu-2.0>=30
 ## SavedVariables: QuietMounts_Data

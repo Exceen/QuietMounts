@@ -29,9 +29,9 @@ function addon:SetupSettings()
 		name = addon.title,
 		displayName = addon.title,
 		author = "Exceen",
-		version = "1.0",
+		version = "1.1",
 		registerForDefaults = true,
-		-- website = "http://www.esoui.com/downloads/xyz.html",
+		website = "https://www.esoui.com/downloads/info2641-QuietMounts.html",
 	}
 	LAM2:RegisterAddonPanel(addon.name, panelData)
 
