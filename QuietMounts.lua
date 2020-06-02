@@ -1,6 +1,7 @@
 local addon = {
 	name = "QuietMounts",
 	title = "Quiet Mounts",
+	version = "1.2",
 	defaults =
 	{
 		defaultFootstepsVolume = 70,
@@ -9,15 +10,16 @@ local addon = {
 }
 
 local function OnMountedStateChanged(eventCode, isMounted)
-	if isMounted then
-		SetSetting(SETTING_TYPE_AUDIO, AUDIO_SETTING_FOOTSTEPS_VOLUME, addon.settings.mountedFootstepsVolume)
-	else
-		SetFlashWaitTime(10000)
-		SetSetting(SETTING_TYPE_AUDIO, AUDIO_SETTING_FOOTSTEPS_VOLUME, addon.settings.defaultFootstepsVolume)
+	if addon.settings ~= nil then
+		if isMounted then
+			SetSetting(SETTING_TYPE_AUDIO, AUDIO_SETTING_FOOTSTEPS_VOLUME, addon.settings.mountedFootstepsVolume)
+		else
+			SetFlashWaitTime(10000)
+			SetSetting(SETTING_TYPE_AUDIO, AUDIO_SETTING_FOOTSTEPS_VOLUME, addon.settings.defaultFootstepsVolume)
+		end
 	end
 end
 EVENT_MANAGER:RegisterForEvent(addon.name, EVENT_MOUNTED_STATE_CHANGED, OnMountedStateChanged)
-
 
 
 function addon:SetupSettings()
@@ -29,7 +31,7 @@ function addon:SetupSettings()
 		name = addon.title,
 		displayName = addon.title,
 		author = "Exceen",
-		version = "1.1",
+		version = addon.version,
 		registerForDefaults = true,
 		website = "https://www.esoui.com/downloads/info2641-QuietMounts.html",
 	}
@@ -61,7 +63,6 @@ function addon:SetupSettings()
 end
 
 
-
 local function OnAddonLoaded(event, name)
 	if name ~= addon.name then return end
 	EVENT_MANAGER:UnregisterForEvent(addon.name, EVENT_ADD_ON_LOADED)
@@ -71,7 +72,6 @@ local function OnAddonLoaded(event, name)
 	addon:SetupSettings()
 end
 EVENT_MANAGER:RegisterForEvent(addon.name, EVENT_ADD_ON_LOADED, OnAddonLoaded)
-
 
 
 QUIETER_MOUNTS = addon
