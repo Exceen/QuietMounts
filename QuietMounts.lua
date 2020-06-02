@@ -1,7 +1,7 @@
 local addon = {
 	name = "QuietMounts",
 	title = "Quiet Mounts",
-	version = "1.2",
+	version = "1.3",
 	defaults =
 	{
 		defaultFootstepsVolume = 70,
@@ -23,8 +23,7 @@ EVENT_MANAGER:RegisterForEvent(addon.name, EVENT_MOUNTED_STATE_CHANGED, OnMounte
 
 
 function addon:SetupSettings()
-	local LAM2 = LibAddonMenu2 or LibStub("LibAddonMenu-2.0")
-	if not LAM2 then return end
+	if not LibAddonMenu2 then return end
 
 	local panelData = {
 		type = "panel",
@@ -35,7 +34,7 @@ function addon:SetupSettings()
 		registerForDefaults = true,
 		website = "https://www.esoui.com/downloads/info2641-QuietMounts.html",
 	}
-	LAM2:RegisterAddonPanel(addon.name, panelData)
+	LibAddonMenu2:RegisterAddonPanel(addon.name, panelData)
 
 	local optionsTable = {
 	    {
@@ -59,7 +58,7 @@ function addon:SetupSettings()
 	      default = self.defaults.mountedFootstepsVolume,
 	    },
 	}
-	LAM2:RegisterOptionControls(addon.name, optionsTable)
+	LibAddonMenu2:RegisterOptionControls(addon.name, optionsTable)
 end
 
 
